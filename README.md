@@ -1,2 +1,2 @@
 # hyperparameter_optimization
-I try to test different hyper param optimization techniques
+A simple example that showcases the use of hyperopt for finding minimum loss for a machine learning model.
