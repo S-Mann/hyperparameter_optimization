@@ -89,7 +89,8 @@ print('Actual best value of x:      {:.4f}'.format(minx))
 # This is a more practical example of using hyperopt
 # ---------------------------------------------------
 
-from io import StringIO
+import io
+import requests
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
@@ -99,8 +100,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-dataset=pd.read_csv("dataset/dataset.csv")
-dataset.head()
+url="https://raw.githubusercontent.com/S-Mann/hyperparameter_optimization/master/dataset/dataset.csv"
+s=requests.get(url).content
+dataset=pd.read_csv(io.StringIO(s.decode('utf-8')))
 
 excluded_columns = [x not in ['model','msrp','cost_per_unit','profit_per_unit'] for x in dataset.columns]
 
